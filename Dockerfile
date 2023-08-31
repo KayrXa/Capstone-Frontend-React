@@ -8,8 +8,6 @@ RUN npm ci
 
 COPY public/ public
 COPY src/ src
-RUN npm run build
-
 RUN npm install
 EXPOSE 3000
 CMD ["npm","start"]
