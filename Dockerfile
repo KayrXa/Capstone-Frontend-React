@@ -1,10 +1,14 @@
 FROM node:latest
-WORKDIR /usr/src
+WORKDIR /usr
 
-COPY package-lock.json package-lock.json 
+
 COPY package.json package.json
-COPY public/* public
-COPY src/* src
+COPY package-lock.json package-lock.json
+RUN npm ci
+
+COPY public/ public
+COPY src/ src
+RUN npm run build
 
 RUN npm install
 EXPOSE 3000
