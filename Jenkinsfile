@@ -1,12 +1,12 @@
 pipeline {
     agent any
     environment{
-        DOCKERHUB_CREDENTIALS = credentials('valaxy-dockerhub')
+        DOCKERHUB_CREDENTIALS = credentials('kayrxa-docker')
     }
     stages {
         stage('SCM Checkout') {
             steps{
-                git 'https://github.com/KayrXa/Capstone-Frontend-React'
+                git branch: 'main', credentialsId: 'fd074f97-7b04-4513-8996-bf3ffcb7edd8', url: 'https://github.com/KayrXa/Capstone-Frontend-React'
             }
         }
 
@@ -27,8 +27,6 @@ pipeline {
                 sh 'docker push kayrxa/nodeapp:$BUILD_NUMBER'
             }
         }
-
-
 
     }
 
